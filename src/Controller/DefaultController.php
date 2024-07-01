@@ -17,4 +17,13 @@ class DefaultController extends AbstractController
             'message' => $greetingsService->greet($name),
         ]);
     }
+
+    #[Route('/goodbye/{name}', name: 'app_goodbye')]
+    public function goodbye(Greetings $greetingsService, string $name): Response
+    {
+        return $this->render('default/index.html.twig', [
+            'title' => 'Goodbye',
+            'message' => $greetingsService->bye($name),
+        ]);
+    }
 }
